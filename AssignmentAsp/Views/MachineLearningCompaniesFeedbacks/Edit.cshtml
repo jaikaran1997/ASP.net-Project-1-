@@ -1,0 +1,69 @@
+﻿@model AssignmentAsp.Models.MachineLearningCompaniesFeedback
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4 style="padding-left:15px;">Feedback on Machine Learning Companies</h4>
+<hr />
+<div class="row" style="margin-right:auto;">
+    <div class="col-lg-11 col-md-11 col-sm-11" >
+        <form asp-action="Edit" class="formpad">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="PostDate" class="control-label"></label>
+                <input asp-for="PostDate" class="form-control" type="datetime" value="@DateTime.Now" readonly />
+                <span asp-validation-for="PostDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TopicTitle" class="control-label"></label>
+                <input asp-for="TopicTitle" class="form-control" />
+                <span asp-validation-for="TopicTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Like" class="control-label"></label>
+                <input asp-for="Like" class="form-control"/>
+                <span asp-validation-for="Like" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MessageContent" class="control-label"></label>
+                <textarea style="width:75%" asp-for="MessageContent" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="MessageContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agree" class="control-label"></label>
+                <input asp-for="Agree" class="form-control"/>
+                <span asp-validation-for="Agree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Disagree" class="control-label"></label>
+                <input asp-for="Disagree" class="form-control"/>
+                <span asp-validation-for="Disagree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectCompany" class="control-label"></label>
+                <input asp-for="SelectCompany" class="form-control"/>
+                <span asp-validation-for="SelectCompany" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" onclick="~/Home/MachineLearning"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-left:10px">
+    <a style="color:grey" asp-controller="Home" asp-action="MachineLearning">Back to Machine Learning Page</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<AssignmentAsp.Models.MachineLearningCompaniesFeedback>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<hr />
+<p  style="padding-left:15px">
+    <a asp-action="Create" asp-controller="MachineLearningCompaniesFeedbacks" class="btn btn-info">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SelectCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MessageContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Like)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Agree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disagree)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TopicTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SelectCompany)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageContent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Like)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disagree)
+            </td>
+            @if (User.IsInRole("Manager"))
+            {
+                <td>
+                    
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-default">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            }
+            </tr>
+}
+    </tbody>
+</table>

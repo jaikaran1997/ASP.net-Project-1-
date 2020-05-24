@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script language="JavaScript">
+        function validate() {
+            if (document.Contact.firstName.value == "") {
+                //
+                // If field string is null, display a (very bad!!) message, and return false (stop
+                //the script and exit here)
+                //
+                alert("No First Name !")
+                return false
+            }
+
+            else if (document.Contact.lastName.value == "") {
+                //
+                // If field string is null, display a (very bad!!) message, and return false (stop
+                //the script and exit here)
+                //
+                alert("No Last Name !")
+                return false;
+            }
+
+            var x = document.Contact.email.value;
+            var atpos = x.indexOf('');
+            var dotpos = x.lastIndexOf(".");
+            if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                alert("Not a valid e-mail address");
+                return false;
+            }
+            else if (document.Contact.postadd.value == "") {
+                //
+                // If field string is null, display a (very bad!!) message, and return false (stop
+                //the script and exit here)
+                //
+                alert("No Mailing Address !")
+                return false;
+            }
+        }
+
+</script>
+<div class="bg1" style="height:100px"></div>
+<div class="bg1">
+    <p class="title intro">Contact Us <br /> About Us</p>
+</div>
+<div class="bg1">
+    <div class="data" style="height:350px">
+        <!--Contact Form-->
+        <form name="Contact" onSubmit="return validate()" method='post'
+              action='contact.php' style="text-align:center">
+            <p><i><b>Please fill the information</b></i></p>
+            <table border='0' align="center">
+                <!--Table-->
+                <tr>
+                    <td>First Name*:</td>
+                    <td> <input type="text" name="firstName" size="50" onfocus="this.value=''"> <br></td>
+                </tr>
+
+                <tr>
+                    <td>Last Name*:</td>
+                    <td> <input type="text" name="lastName" size="50" onfocus="this.value=''"> <br></td>
+                </tr>
+
+                <tr>
+                    <td>Email Address*:</td>
+                    <td> <input type="text" name="email" size="50" onfocus="this.value=''"><br></td>
+                </tr>
+
+                <tr>
+                    <td>Mailing Address*:</td>
+                    <td> <input type="text" name="postadd" size="50" onfocus="this.value=''"><br></td>
+                </tr>
+            </table>
+
+            <p><i><b>Please put relevant text here</b></i></p>
+            <!--Textbox-->
+            <textarea name="comments" rows="4" cols="60">
+			Enter comments here.
+			</textarea>
+            <br>
+
+            <input type="submit" value="Submit"> <!--Submit button-->
+            <input type="reset" value="Clear the Form and Reset">
+            <input type="button" value="Close" onClick="javascript:window.close()"><br>
+            <i>* required fields</i>
+        </form>
+    </div>
+
+</div>
